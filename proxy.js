@@ -19,6 +19,6 @@ for (var i = 0; i < config.remoteApiServers.length; i++) {
 
 app.use(config.localServer.publicBaseUrl, express.static(config.localServer.publicDir));
 
-app.listen(config.localServer.port, function () {
-    console.log('Proxy Server running at localhost:' + config.localServer.port);
+app.listen(process.env.PORT, process.env.IP, function () {
+    console.log('Proxy Server running at '+ process.env.IP +':' + process.env.PORT);
 });
