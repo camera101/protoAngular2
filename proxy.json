@@ -1,0 +1,13 @@
+{
+  "localServer" : {
+    "port": 8080,
+    "publicDir": ".",
+    "publicBaseUrl": "/"
+  },
+  "remoteApiServers": [
+    {
+      "localPath" : "/api",
+      "remotePath": "http://127.0.0.1:8081"
+    }
+  ]
+}

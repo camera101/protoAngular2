@@ -1,0 +1,4 @@
+/node_modules
+/app_js
+/app/**/*.js
+/app/**/*.map
