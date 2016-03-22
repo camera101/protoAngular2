@@ -24,6 +24,7 @@
     "gulp": "*",
     "gulp-typescript": "*",
     "gulp-watch": "^4.3.5",
+    "gulp-sourcemaps": "^1.6.0",
     "typescript": "*",
     "typings": "*"
   }
