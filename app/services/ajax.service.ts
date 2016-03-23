@@ -3,12 +3,9 @@ import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 
-
 @Injectable()
 
 export class AjaxService {
-
-    private requestCount = 0;
 
     constructor(private http:Http) {
     }
@@ -16,23 +13,8 @@ export class AjaxService {
     sendGet(config: any) {
         if (!config.url) console.error('Ajax Service: URL param not defined');
 
-        this.requestCount++;
-        this.http.get(config.url)
-            .map(function (res) {
-                res.json();
-            })
-            .subscribe(
-                function (data) {
-                    config.success ? config.success(data) : null;
-                },
-                function (error) {
-                    config.error ? config.error(error) : null;
-                },
-                function () {
-                    this.requestCount--;
-                    config.after ? config.after() : null;
-                }
-            )
+        return this.http.get(config.url)
+            .map(res => res.json())
     }
 
     sendPost(config: any) {
@@ -49,11 +31,11 @@ export class AjaxService {
                 }
             }
             if (paramArray.length > 0) {
-                var paramString = paramArray.join('&');
+                paramString = paramArray.join('&');
             }
         }
-        me.requestCount++;
-        me.http.post(config.url, paramString, {
+
+        return me.http.post(config.url, paramString, {
                 headers: function () {
                     var headers = new Headers();
                     headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -61,20 +43,7 @@ export class AjaxService {
                 }()
             })
             .map(function (res) {
-                res.json();
+                res.json()
             })
-            .subscribe(
-                function (data) {
-                    config.success ? config.success(data) : null;
-                },
-                function (error) {
-                    config.error ? config.error(error) : null;
-                },
-                function () {
-
-                    this.requestCount--;
-                    config.after ? config.after() : null;
-                }
-            )
     }
 }

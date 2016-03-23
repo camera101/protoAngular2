@@ -1,55 +1,39 @@
 import { Component, OnInit } from 'angular2/core';
 import { UsersService } from './UsersService';
-
+import { User } from './UserInterface';
+import {DataTable} from 'primeng/primeng';
+import {Column} from 'primeng/primeng';
+import {Fieldset} from 'primeng/primeng';
 
 @Component({
     selector: 'page',
     template: `
-    <div class="container">
-        <div class="page-header">
-            <h1>Users Page</h1>
-        </div>
-
-    </div>
+    <br/>
+    <p-fieldset legend="Users">
+        <p-dataTable [value]="users">
+            <p-column field="username" header="Username" [sortable]="true"></p-column>
+            <p-column field="email" header="Email" [sortable]="true"></p-column>
+            <p-column field="name" header="Name" [sortable]="true"></p-column>
+        </p-dataTable>
+    </p-fieldset>
     `,
     providers: [
         UsersService
+    ],
+    directives: [
+        DataTable,
+        Column,
+        Fieldset
     ]
 })
 
 export class UsersPage implements OnInit{
 
-    public getData: string;
+    users: User[];
 
-    public postData: string;
-
-    constructor(private userService: UsersService) { }
+    constructor(private userService: UsersService) {}
 
     ngOnInit() {
-        var me = this;
-        me.userService.getUsers({
-            success: (data: any) => me.getData = JSON.stringify(data),
-            error: (error: any) => alert(error),
-            after: function () {
-                console.log('Finished Get');
-                me.userService.setUsers({
-                    params: {
-                        aString: 'string',
-                        anArray: ['arr1','arr2'],
-                        anObject: {prop1: 'val1', prop2:'val2'}
-                    },
-                    success: (data: any) => me.postData = JSON.stringify(data),
-                    error: (error: any) => alert(error),
-                    after: function () {
-                        console.log('Finished Post');
-                    }
-                });
-            }
-        });
-
-
-
-
-
+        this.userService.listUsers().subscribe(data => this.users = data)
     }
 }

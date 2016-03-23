@@ -4,15 +4,19 @@
     <title>Angular 2 Startup Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.min.css" />
+
     <link rel="stylesheet" href="css/styles.css">
+
 
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
@@ -20,16 +24,25 @@
 
     <script>
         System.config({
+            defaultJsExtensions: true,
             packages: {
                 app: {
                     format: 'register',
                     defaultExtension: 'js'
+                },
+                primeng: {
+                    defaultExtension: 'js'
                 }
+            },
+            map: {
+                "primeng": "node_modules/primeng"
             }
         });
         System.import('app/main')
                 .then(null, console.error.bind(console));
     </script>
+
+
 </head>
 
 <body>

@@ -1,5 +1,6 @@
 import {Injectable} from 'angular2/core';
-import {AjaxService} from "../../services/ajax.service";
+import {AjaxService} from '../../services/ajax.service';
+import {User} from './UserInterface';
 
 @Injectable()
 
@@ -7,28 +8,24 @@ export class UsersService {
 
     private baseUrl = 'http://localhost:8080';
 
-    constructor (
-        private ajax:AjaxService
-    ) {}
+    constructor (private ajax: AjaxService) {}
 
-    getUsers(options: any) {
-        this.ajax.sendGet({
-            url: this.baseUrl + '/api/get/1',
-            success: options.success || function(){},
-            error: options.error || function () {},
-            after: options.after || function () {}
-        });
+    listUsers() {
+        return this.ajax.sendGet({
+            url: this.baseUrl + '/api/getAll'
+        })
     }
 
-    setUsers(options: any) {
+    getUser(userId: number) {}
 
-        this.ajax.sendPost({
+    createUser(user:User) {
+        return this.ajax.sendPost({
             url: this.baseUrl + '/api/what',
-            params: options.params || {},
-            success: options.success || function(){},
-            error: options.error || function () {},
-            after: options.after || function () {}
-        });
+            params: user
+        })
     }
 
+    deleteUser(userId: number) {}
+
+    updateUser(user: User) {}
 }
