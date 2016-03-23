@@ -4,16 +4,16 @@ const del = require('del');
 const typescript = require('gulp-typescript');
 const watch = require('gulp-watch');
 
-const appTS = 'app';
+const app = 'app';
 
 gulp.task('clean', function () {
-    return del(appTS + '/**/*.js');
+    return del([app + '/**/*.js',app + '/**/*.map']);
 });
 
 gulp.task('compile', ['clean'], function () {
     return gulp
         .src([
-            appTS + "/**/*.ts",
+            app + "/**/*.ts",
             "typings/browser/**/*.ts",
             "typings/browser.d.ts"
          ])
@@ -31,11 +31,11 @@ gulp.task('compile', ['clean'], function () {
             "suppressImplicitAnyIndexErrors": true
         }))
         .pipe(sourceMaps.write('.'))
-        .pipe(gulp.dest(appTS));
+        .pipe(gulp.dest(app));
 });
 
 gulp.task('watch', ['compile'], function() {
-    gulp.watch(appTS + '/**/*.ts', ['compile']);
+    gulp.watch(app + '/**/*.ts', ['compile']);
 });
 
 gulp.task('build', ['compile']);
