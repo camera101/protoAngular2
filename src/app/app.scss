@@ -1,0 +1,32 @@
+// styles applied on :host are applied on the current component, "app" in this case
+:host {
+  display: block;
+}
+
+:host .title {
+  color: black;
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 5px;
+
+}
+header {
+  background-color: #fdfff2;
+  padding: 15px;
+  margin: 10px;
+
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+main {
+  padding: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 5px;
+  display: block;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
+}

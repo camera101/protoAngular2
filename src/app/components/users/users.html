@@ -1,0 +1,10 @@
+<p>Users Table</p>
+
+<input *ngIf="config.filtering" placeholder="Filter"
+       [ngTableFiltering]="config.filtering"
+       (tableChanged)="onChangeTable(config)"/>
+
+<ngTable [config]="config.sorting"
+         (tableChanged)="onChangeTable(config)"
+         [rows]="rows" [columns]="columns">
+</ngTable>
