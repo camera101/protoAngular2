@@ -1,0 +1,20 @@
+<div class="block-grid-xs-1 block-grid-sm-2 block-grid-md-2 block-grid-lg-3">
+    <div *ngFor="#friend of friends">
+        <div class="main-wrapper">
+            <div class="outer-hexagon">
+                <div class="inner-hexagon">
+                    <div style="display: table-cell;vertical-align: bottom;">
+                        {{friend.score}}%
+                    </div>
+                </div>
+            </div>
+            <div class="user-details">
+                <span style="text-align: center;">{{friend.name}}</span>
+                <button class="btn btn-primary btn-block btn-xs">Profile</button>
+                <button class="btn btn-primary btn-block btn-xs">Questions</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+

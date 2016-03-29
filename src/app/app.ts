@@ -1,31 +1,50 @@
-import {Component, ElementRef} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from 'angular2/core';
+import {RouteConfig, RouterLink, Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
-import '../style/app.scss';
+
+import '../style/app.scss'; //global styles
+
+import {CustomRouterOutlet} from './directives/custom-router-outlet';
+
+import {UserService} from './services/user';
 
 import {Home} from './components/home/home';
+import {Friends} from './components/friends/friends';
 import {About} from "./components/about/about";
-import {Users} from "./components/users/users";
+
+import {Authentication} from "./components/authentication/authentication";
 
 @Component({
     selector: 'app',
-    providers: [...FORM_PROVIDERS],
-    directives: [...ROUTER_DIRECTIVES],
+    providers: [...FORM_PROVIDERS, UserService],
+    directives: [CustomRouterOutlet, RouterLink],
     pipes: [],
     styles: [require('./app.scss')],
     template: require('./app.html')
 })
 @RouteConfig([
-    {path: '/', component: Home, name: 'Home'},
-    {path: '/About', component: About, name: 'About'},
-    {path: '/Users', component: Users, name: 'Users'}
+    {path: '/', component: Home, name: 'Home', useAsDefault: true},
+    {path: '/friends', component: Friends, name: 'Friends'},
+    {path: '/about', component: About, name: 'About'},
+    {path: '/authentication', component: Authentication, as: 'Authentication'},
+
 ])
 export class App {
-    url: string = 'https://github.com/preboot/angular2-webpack';
 
-    title: string = 'Angular 2 Starter App';
+    title: string = 'Social Quiz';
 
-    constructor(private el: ElementRef) {
+    constructor(public router: Router,
+                public userService: UserService) {
+
+    }
+
+    logout(event) {
+        event.preventDefault();
+        var me = this;
+        this.userService.logout(function () {
+            me.router.navigateByUrl('/authentication');
+        });
+
     }
 }

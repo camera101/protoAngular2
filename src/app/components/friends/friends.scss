@@ -1,0 +1,71 @@
+:host {
+  color: black;
+}
+
+.user-details {
+text-align: center;
+  margin-left: 140px;
+  height: 110px;
+}
+
+.main-wrapper {
+  height: 130px;
+  padding:10px;
+  margin: 5px;
+  -webkit-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  -kthtml-transition: all .1s linear;
+  transition: all .1s linear;
+}
+
+.main-wrapper:hover {
+  background-color: #DEE8A2;
+  /*border: 2px solid black;*/
+  -webkit-box-shadow: 0px 0px 4px 2px black;
+  -moz-box-shadow: 0px 0px 4px 2px black;
+  box-shadow: 0px 0px 4px 2px black;
+  -webkit-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  -kthtml-transition: all .1s linear;
+  transition: all .1s linear;
+
+}
+
+
+.outer-hexagon {
+  float: left;
+  width: 130px;
+  height: 110px;
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  -webkit-clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: black;
+}
+
+.inner-hexagon {
+  //background-color: #46BB9B;
+  color: white;
+  background: url('img/default_user_icon.jpg');
+  background-size: 100% auto;
+  text-align: center;
+  display: table;
+  margin: 0 auto;
+  width: 99%;
+  height: 99%;
+  -webkit-clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.btn-xs {
+  padding: 0.01rem 0.2rem;
+}
+
+.btn-primary {
+  background-color: #2EB299;
+  border-color: #2EB299;
+}

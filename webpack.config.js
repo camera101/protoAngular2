@@ -134,10 +134,9 @@ module.exports = function makeWebpackConfig() {
       {test: /\.html$/, loader: 'raw'},
       {test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
 
-      {
-        test: /\.(otf|eot|svg|ttf|woff)$/,
-        loader: 'url-loader?limit=8192'
-      }
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
+
     ],
     postLoaders: [],
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -166,6 +165,13 @@ module.exports = function makeWebpackConfig() {
       'process.env': {
         ENV: JSON.stringify(ENV)
       }
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery',
+      "Tether": 'tether',
+      "window.Tether": "tether"
     })
   ];
 
