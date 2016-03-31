@@ -5,9 +5,7 @@ import 'angular2/bundles/angular2-polyfills.js';
 import 'angular2-jwt';
 import 'jwt-decode/standalone.js';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery';
-import 'tether';
 import 'bootstrap-loader';
 
 import 'angular2/platform/browser';
