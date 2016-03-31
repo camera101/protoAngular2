@@ -1,9 +1,8 @@
+import '../style/app.scss'; //global styles
+
 import {Component} from 'angular2/core';
 import {RouteConfig, RouterLink, Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
-
-
-import '../style/app.scss'; //global styles
 
 import {CustomRouterOutlet} from './directives/custom-router-outlet';
 

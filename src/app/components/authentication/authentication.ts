@@ -5,6 +5,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
 import {UserService} from '../../services/user';
 import {AjaxService} from '../../services/ajax';
+import {AbstractComponent} from "../abstract/abstract.component";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {AjaxService} from '../../services/ajax';
     styles: [require('./authentication.scss')]
 })
 
-export class Authentication {
+export class Authentication extends AbstractComponent {
 
     public loginErrors: string[] = [];
 
@@ -28,6 +29,7 @@ export class Authentication {
 
     constructor(public router: Router,
                 public userService: UserService) {
+        super();
     }
 
     login(event, username, password) {

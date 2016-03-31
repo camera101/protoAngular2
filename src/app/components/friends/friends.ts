@@ -1,5 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {AjaxService} from './../../services/ajax';
+import {AbstractComponent} from "../abstract/abstract.component";
 
 @Component({
     selector: 'friends',
@@ -10,7 +11,7 @@ import {AjaxService} from './../../services/ajax';
     template: require('./friends.html')
 })
 
-export class Friends implements OnInit {
+export class Friends extends AbstractComponent implements OnInit {
 
     public friends = [
         {"user_id": 1, "name": "Johnny John", "score": 88, "activity": 50, "friends": 10},
@@ -21,6 +22,7 @@ export class Friends implements OnInit {
     ];
 
     constructor(public ajax: AjaxService) {
+        super();
     }
 
     ngOnInit() {

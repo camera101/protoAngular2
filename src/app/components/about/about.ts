@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
+import {AbstractComponent} from "../abstract/abstract.component";
 
 @Component({
     selector: 'about',
@@ -8,10 +9,10 @@ import {Component, OnInit} from 'angular2/core';
     directives: [],
     pipes: []
 })
-export class About implements OnInit {
+export class About extends AbstractComponent implements OnInit {
 
     constructor() {
-        //constructor
+        super();
     }
 
     ngOnInit() {

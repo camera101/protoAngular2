@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
+import {AbstractComponent} from "../abstract/abstract.component";
 
 @Component({
     selector: 'home',
@@ -8,10 +9,10 @@ import {Component, OnInit} from 'angular2/core';
     template: require('./home.html')
 })
 
-export class Home implements OnInit {
+export class Home extends AbstractComponent implements OnInit {
 
     constructor() {
-        //constructor
+        super();
     }
 
     ngOnInit() {
